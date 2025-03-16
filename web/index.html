@@ -1,0 +1,47 @@
+import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/screens/components/text_control_widget.dart';
+
+/// Displays the most recently recognized words and the sound level.
+class RecognitionResultsWidget extends StatefulWidget {
+  final List<String> lastWords;
+  // final void Function() showModal;
+  const RecognitionResultsWidget({
+    super.key,
+    //  required this.showModal,
+    required this.lastWords,
+  });
+
+  @override
+  State<RecognitionResultsWidget> createState() =>
+      _RecognitionResultsWidgetState();
+}
+
+class _RecognitionResultsWidgetState extends State<RecognitionResultsWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Stack(
+          children: <Widget>[
+            Container(
+              constraints: const BoxConstraints(
+                minHeight: 200,
+              ),
+              // color: Theme.of(context).secondaryHeaderColor,
+              child: Center(
+                child: Text(
+                  widget.lastWords.join('. ').replaceAll('.', ''),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
